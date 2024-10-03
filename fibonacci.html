@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fibonacci</title>
+</head>
+<body>
+    <br>
+ <strong>Ciąg Fibonacciego to ciąg liczb określonych rekurencyjnie</strong>
+ <p>F(n) = F <sub>n-1</sub> + F <sub>n-2</sub> dla n0</p> 
+<br>
+<strong><cite>F</cite><sub>0</sub></strong>= 0<strong><br>
+<strong><cite>F</cite><sub>1</sub></strong>= 1<strong><br>
+<strong><cite>F</cite><sub>2</sub></strong>= 1<strong><br>
+<strong><cite>F</cite><sub>3</sub></strong>= 2<strong><br>
+<strong><cite>F</cite><sub>4</sub></strong>= 3<strong><br>
+<strong><cite>F</cite><sub>5</sub></strong>= 5<strong><br>
+<strong><cite>F</cite><sub>6</sub></strong>= 8<strong><br>
+<strong><cite>F</cite><sub>7</sub></strong>= 13<strong><br>
+<strong><cite>F</cite><sub>8</sub></strong>= 21<strong><br>
+<strong><cite>F</cite><sub>9</sub></strong>= 34<strong><br>
+
+</strong>
+
+<pre>Fibonacci( n )
+    if n=0 then return 0
+    if n=1 then return 1
+    f' ← 0
+    f ← 1
+    for i ← 2 to n
+      do
+        m ← f + f'
+        f' ← f
+        f ← m
+      end
+    return f</pre>
+
+<a href="https://pl.wikipedia.org/wiki/Fibonacci">życiorys Fibonacciego</a>
+<p>ciąg Fibonacciego w <del>bioloigii</del>,<mark>literaturze</mark> i <q>muzyce</q> </p>
+
+</body>
+</html>

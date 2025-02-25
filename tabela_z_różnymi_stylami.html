@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabele_z_różnymi_stylami</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+            
+        }
+        th {
+            background-color: #ffffff;
+        }
+        tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+        
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Godzina</th>
+            <th>Poniedziałek</th>
+            <th>Wtorek</th>
+            <th>Środa</th>
+            <th>Czwartek</th>
+            <th>Piątek</th>
+        </tr>
+        <tr>
+            <td>8<sup><U>00</U></sup> &mdash; 8<sup><U>45</U></sup></td>
+            <td><p class="italic">pochylenie</p></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span style="color:yellow">k</span>
+                <span style="color:orange">o</spam>
+                <span style="color:orangered">l</span>
+                <span style="color:green">o</spam>
+                <span style="color:blue">r</spam>
+            </td>
+        </tr>
+        <tr>
+            <td>8<sup><U>50</U></sup> &mdash; 9<sup><U>35</U></sup></td>
+            <td><strong>pogrubienie</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>9<sup><U>40</U></sup> &mdash; 10<sup><U>25</U></sup></td>
+            <td><s>przekreślenie</s></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+        <td></td>
+        </tr>
+    </table>
+</body>
+</html>

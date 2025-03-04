@@ -1,35 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tabele_z_różnymi_stylami</title>
+    <title>Tabela z różnymi stylami</title>
     <style>
         table {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed;
             font-family: Arial;
             font-size: 14px;
         }
         th, td {
             border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-            
+            padding: 10px 5px;
+            text-align: center;
         }
         th {
-            background-color: #ffffff;
+            background-color: #f0f0f0;
         }
-        tr:nth-child(even) {
-            background-color: #ffffff;
+        .styled-text {
+            border: 2px solid yellowgreen;
+            padding: 15px;
+            border-radius: 50px 20px 50px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
         }
-        
+        ul {
+            list-style-type: square;
+        }
+        ol {
+            list-style-type: lower-greek;
+        }
+        .shadow-text {
+            text-shadow: 2px 2px 2px gray;
+        }
+        .wavy-text {
+            text-decoration: underline wavy;
+        }
     </style>
 </head>
 <body>
+    <h2>Tabela z różnymi stylami</h2>
     <table>
         <tr>
-            <th>Godzina</th>
+            <th>Godz.</th>
             <th>Poniedziałek</th>
             <th>Wtorek</th>
             <th>Środa</th>
@@ -37,36 +55,49 @@
             <th>Piątek</th>
         </tr>
         <tr>
-            <td>8<sup><U>00</U></sup> &mdash; 8<sup><U>45</U></sup></td>
-            <td><p class="italic">pochylenie</p></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><span style="color:yellow">k</span>
-                <span style="color:orange">o</spam>
-                <span style="color:orangered">l</span>
-                <span style="color:green">o</spam>
-                <span style="color:blue">r</spam>
+            <td>8<sup><u>00</u></sup> &mdash; 8<sup><u>45</u></sup></td>
+            <td><i>pochylenie</i></td>
+            <td rowspan="3">
+                <div class="styled-text">Beware the fury of a patient man.</div>
+            </td>
+            <td rowspan="3">
+                <ul>
+                    <li>Pol</li>
+                    <li>Hist</li>
+                    <li>WF</li>
+                    <li>Geo</li>
+                    <li>GW</li>
+                </ul>
+            </td>
+            <td rowspan="3">
+                <ol>
+                    <li>Mat</li>
+                    <li>Fiz</li>
+                    <li>Chem</li>
+                    <li>Bio</li>
+                    <li>Ang</li>
+                </ol>
+            </td>
+            <td>
+                <span style="color:yellow">k</span>
+                <span style="color:orange">o</span>
+                <span style="color:red">l</span>
+                <span style="color:green">o</span>
+                <span style="color:blue">r</span>
             </td>
         </tr>
         <tr>
-            <td>8<sup><U>50</U></sup> &mdash; 9<sup><U>35</U></sup></td>
+            <td>8<sup><u>50</u></sup> &mdash; 9<sup><u>35</u></sup></td>
             <td><strong>pogrubienie</strong></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td class="shadow-text">z ostrym cieniem mgły</td>
         </tr>
         <tr>
-            <td>9<sup><U>40</U></sup> &mdash; 10<sup><U>25</U></sup></td>
+            <td>9<sup><u>40</u></sup> &mdash; 10<sup><u>25</u></sup></td>
             <td><s>przekreślenie</s></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><a href="https://www.youtube.com/watch?v=kUMe1FH4CHE&t=3s" style="text-decoration: overline wavy;">Dowolna strona</a></td>
         </tr>
         <tr>
-        <td></td>
+            <td colspan="6" style="text-transform: uppercase; text-align: center;">Hypertext Transfer Protocol</td>
         </tr>
     </table>
 </body>

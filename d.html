@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP8266 Monitor</title>
+    <link rel="stylesheet" href="strona_esp.css">
+</head>
+<body>
+    <div class="container">
+        <button class="theme-toggle" onclick="toggleTheme()">☾ / ☀</button>
+        <h1>ESP8266 Monitor</h1>
+        <p class="status">Data i godzina: <span id="datetime">--</span></p>
+        <p class="status">Temperatura: <span id="temp">--</span> &#8451;</p>
+        <p class="status">Wilgotność: <span id="humidity">--</span> % (Zakres: 80-100%)</p>
+        <p class="status">LED Status: <span id="ledStatus" class="led-off">OFF</span></p>
+        
+        <label for="boxDate">Data wstawienia pudełka:</label>
+        <input type="date" id="boxDate" onchange="updateDayCounter()">
+        <button id="saveDate" onclick="updateBoxDate()">Zapisz</button>
+        <p class="status">Dni od wstawienia pudełka: <span id="dayCounter">--</span></p>
+        
+        <label for="startTime">Czas rozpoczęcia:</label>
+        <input type="time" id="startTime">
+        <br>
+        <label for="endTime">Czas zakończenia:</label>
+        <input type="time" id="endTime">
+        <br>
+        <button id="saveTimeRange" onclick="updateTimeRange()">Zapisz zakres</button>
+        <p class="status">Zakres świecenia: <span id="timeRange">--</span></p>
+        
+        <button id="ledButton" onclick="toggleLED()">Włącz LED</button>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+            const isDark = document.body.classList.contains("dark-mode");
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+            document.querySelector(".theme-toggle").style.backgroundColor = isDark ? "#c9c9c9" : "#000080";
+        }
+
+        function updateDateTime() {
+            // Wyświetlamy lokalny czas z przeglądarki (dla użytkownika)
+            document.getElementById("datetime").innerText = new Date().toLocaleString();
+        }
+
+        function fetchData() {
+            fetch("/data")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("temp").innerText = data.temperature;
+                    document.getElementById("humidity").innerText = data.humidity;
+                    document.getElementById("ledStatus").innerText = data.led ? "ON" : "OFF";
+                    document.getElementById("ledStatus").className = data.led ? "led-on" : "led-off";
+                    document.getElementById("ledButton").innerText = data.led ? "Wyłącz LED" : "Włącz LED";
+                    document.getElementById("boxDate").value = data.boxDate;
+                    document.getElementById("startTime").value = data.startTime;
+                    document.getElementById("endTime").value = data.endTime;
+                    updateDayCounter();
+                    updateTimeRangeDisplay();
+                });
+        }
+
+        function updateBoxDate() {
+            let newDate = document.getElementById("boxDate").value;
+            fetch("/setBoxDate?date=" + newDate).then(() => {
+                fetchData();
+            });
+        }
+
+        // Wyświetla różnicę dni (ujemna, jeśli data w przyszłości)
+        function updateDayCounter() {
+            let boxDate = document.getElementById("boxDate").value;
+            if (boxDate) {
+                let boxTime = new Date(boxDate);
+                let nowTime = new Date();
+                boxTime.setHours(0, 0, 0, 0);
+                nowTime.setHours(0, 0, 0, 0);
+                let diff = Math.floor((nowTime - boxTime) / (1000 * 60 * 60 * 24));
+                document.getElementById("dayCounter").innerText = diff;
+            }
+        }
+
+        function updateTimeRange() {
+            let start = document.getElementById("startTime").value;
+            let end = document.getElementById("endTime").value;
+            fetch(`/setTimeRange?start=${start}&end=${end}`).then(() => {
+                document.getElementById("timeRange").innerText = start && end ? `${start} - ${end}` : "--";
+            });
+        }
+
+        function updateTimeRangeDisplay() {
+            let start = document.getElementById("startTime").value;
+            let end = document.getElementById("endTime").value;
+            document.getElementById("timeRange").innerText = start && end ? `${start} - ${end}` : "--";
+        }
+
+        function toggleLED() {
+            fetch("/toggleLED").then(fetchData);
+        }
+
+        setInterval(fetchData, 2000);
+        setInterval(updateDateTime, 1000);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if (localStorage.getItem("theme") === "dark") {
+                document.body.classList.add("dark-mode");
+                document.querySelector(".theme-toggle").style.backgroundColor = "#c9c9c9";
+            } else {
+                document.querySelector(".theme-toggle").style.backgroundColor = "#000080";
+            }
+            fetchData();
+            updateDateTime();
+        });
+    </script>
+</body>
+</html>
+<style>
+/* Tu jest Twój strona_esp.css – pozostawiamy bez zmian */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+.dark-mode {
+    background-color: #222;
+    color: #f4f4f4;
+}
+.container {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.dark-mode .container {
+    background: #333;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+button {
+    background-color: #000080;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+button:hover {
+    background-color: #0000b3;
+    transform: scale(1.05);
+}
+button:active {
+    transform: scale(0.95);
+}
+.dark-mode button {
+    background-color: #c9c9c9;
+    color: #000;
+}
+.dark-mode button:hover {
+    background-color: #ffffff;
+}
+input {
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.dark-mode input {
+    background: #555;
+    color: white;
+    border: 1px solid #777;
+}
+.status {
+    font-size: 18px;
+    margin: 10px 0;
+}
+.led-on {
+    color: green;
+    font-weight: bold;
+}
+.led-off {
+    color: red;
+    font-weight: bold;
+}
+.theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    padding: 5px;
+    background-color: #000080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.dark-mode .theme-toggle {
+    background-color: #c9c9c9;
+    color: #000;
+}
+</style>

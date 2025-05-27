@@ -1,11 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zoom</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Galeria</title>
+<style>
+  body {
+    background-color: #333;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+
+  fieldset {
+    border: 2px solid #888;
+  }
+
+  legend {
+    color: white;
+    font-weight: bold;
+  }
+
+  .gallery-img {
+    width: 300px;
+    height: 200px;
+    border: 2px solid #555;
+    margin: 9px;
+    transition: transform 1s;
+    display: inline-block;
+    vertical-align: top;
+    object-fit: cover;
+  }
+
+  .gallery-img:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
-    
+  <h1>Galeria</h1>
+  
+  <fieldset>
+    <legend>Dokąd tupta nocą jeż</legend>
+
+   <a href="img/everest.jpg"> <img src="img/everest300x200.jpg"  class="gallery-img" /> </a>
+   <a href="img/jezioro.jpg"> <img src="img/jezioro300x200.jpg"  class="gallery-img" /> </a>
+   <a href="img/zorza.jpg"> <img src="img/zorza300x200.jpg"  class="gallery-img" /> </a>
+   <a href="img/wodospad.jpg">  <img src="img/wodospad300x200.jpg"  class="gallery-img" /> </a>
+  </fieldset>
 </body>
 </html>

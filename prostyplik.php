@@ -7,5 +7,8 @@
 </head>
 <body>
     <b>coś<b>
+    <?php
+ echo "Witamy w języku PHP";
+ ?>
 </body>
 </html>

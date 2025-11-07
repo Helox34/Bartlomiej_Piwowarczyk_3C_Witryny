@@ -1,0 +1,80 @@
+Funkcjie w PHP
+
+1 strlen / mb_strlen
+2 STR_WORD_COUNT
+3 STRREV
+4 STRPOS / MB_STRPOS
+5 STR_REPLACE
+6 STRTOLOWER / MB_STRTOLOWER
+7 STRTOUPPER / MB_STRTOUPPER
+8 UCWORDS
+9 TRIM
+10 STRSTR / MB_STRSTR
+11 SUBSTR / MB_SUBSTR
+12 STR_PAD
+
+
+strlen() / mb_strlen()
+Funkcja: Oblicza długość ciągu znaków.
+Przeznaczenie: strlen() zwraca liczbę bajtów w ciągu, co może być nieprecyzyjne dla wielobajtowych kodowań, 
+jak UTF-8. mb_strlen() jest preferowaną funkcją do obliczania liczby znaków w różnych kodowaniach, w tym w UTF-8, z 
+uwzględnieniem prawidłowego podziału na znaki.
+
+STR_WORD_COUNT
+Funkcja: Zlicza liczbę słów w ciągu znaków.
+Przeznaczenie: Umożliwia analizę treści tekstowych poprzez 
+policzenie poszczególnych słów w danym fragmencie tekstu.
+
+STRREV
+Funkcja: Odwraca ciąg znaków.
+Przeznaczenie: Służy do odwrócenia kolejności liter w stringu, na przykład zamiany "PHP" na "PHP".
+
+STRPOS() / MB_STRPOS() 
+Funkcja: Wyszukuje pierwszą pozycję wystąpienia podciągu w ciągu.
+Przeznaczenie: Pozwala zlokalizować pierwszy znak określonego słowa lub frazy w większym tekście. Funkcje mb_strpos()
+ i mb_strrpos() służą do tego samego celu, ale dla kodowań wielobajtowych, jak UTF-8, z uwzględnieniem prawidłowej interpretacji znaków.
+
+STR_REPLACE 
+Funkcja: Zastępuje jedne fragmenty ciągu innymi.
+Przeznaczenie: Służy do zamiany określonych słów lub znaków na inne, co jest przydatne do korekty tekstu lub modyfikowania treści.
+
+STRTOLOWER() / MB_STRTOLOWER()
+Funkcja: Zamienia wszystkie znaki w ciągu na małe litery.
+Przeznaczenie: Umożliwia standaryzację tekstu poprzez konwersję do małych liter, co jest użyteczne w procesach wyszukiwania lub 
+porównywania tekstu, gdzie wielkość liter nie ma znaczenia. mb_strtolower() jest wersją obsługującą wielobajtowe kodowania, tak jak UTF-8.
+
+STRTOUPPER() / MB_STRTOUPPER()
+Funkcja: Zamienia wszystkie znaki w ciągu na wielkie litery.
+Przeznaczenie: Podobnie jak strtolower(), pozwala na konwersję tekstu do wielkich liter, ułatwiając standaryzację lub dopasowanie 
+go do określonych wymagań. Wariant mb_strtoupper() jest przeznaczony dla kodowań wielobajtowych.
+
+UCWORDS 
+Funkcja: Zamienia pierwszą literę każdego słowa w ciągu na wielką literę.
+Przeznaczenie: Służy do formatowania tekstu, nadając mu profesjonalny wygląd poprzez rozpoczęcie każdego słowa od wielkiej litery
+
+TRIM (rtrim, ltrim) 
+Funkcja: Usuwa białe znaki (lub inne określone znaki) z początku i/lub końca łańcucha.
+Do czego służy: Jest to bardzo przydatne przy walidacji danych wprowadzanych przez użytkownika, aby usunąć niechciane spacje lub 
+inne niepożądane znaki, które mogły zostać przypadkowo wpisane.
+Przykład: Jeśli masz łańcuch " Hello World ", po zastosowaniu trim() otrzymasz "Hello World".
+
+STRSTR / MB_STRSTR 
+Funkcja: Wyszukuje pierwsze wystąpienie podłańcucha w łańcuchu.
+STRSTR() jest standardową wersją.
+MB_STRSTR() jest wersją wielobajtową, która działa poprawnie z znakami spoza ASCII, np. w języku polskim.
+Do czego służy: Pozwala sprawdzić, czy dany ciąg znaków zawiera określony podciąg i, jeśli tak, zwrócić tę część łańcucha, która 
+zaczyna się od znalezionego podciągu.
+Przykład: STRSTR("Hello World", "World") zwróci "World".
+
+SUBSTR / MB_SUBSTR 
+Funkcja: Wyodrębnia fragment łańcucha od określonej pozycji do określonego miejsca.
+SUBSTR() to wersja standardowa.
+MB_SUBSTR() to wersja wielobajtowa, dedykowana dla znaków spoza ASCII, podobnie jak w przypadku STRSTR.
+Do czego służy: Służy do przycinania tekstu, ekstrakcji konkretnych fragmentów danych z dłuższego łańcucha lub tworzenia podsumowań.
+Przykład: SUBSTR("Hello World", 6) zwróci "World".
+
+STR_PAD 
+Funkcja: Dodaje do łańcucha znaki (lub inny łańcuch) z jednej lub obu stron, aż do osiągnięcia zadanego długości.
+Do czego służy: Jest przydatna, gdy potrzebujesz tworzyć jednolicie sformatowane dane, na przykład przy tworzeniu raportów lub 
+etykiet, gdzie wszystkie mają tę samą długość.
+Przykład: STR_PAD("abc", 5, "x", STR_PAD_RIGHT) zwróci "abcxx".

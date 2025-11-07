@@ -1,0 +1,15 @@
+
+W pliku cudzyslowy.php zdefiniuj następujące zmienne:
+Spoczatek = 'Ala ma ';
+$liczba = 4;
+$koniec ' koty';
+Następnie użyj tych zmiennych wyświetlając je funkcją echo na dwa sposoby. Najpierw w pojedynczym cudzysłowie, potem w podwójnym. Przykład:
+echo '$poczatek $liczba $koniec a chce mieć jeszcze dwa.';
+echo "$poczatek $liczba $koniec a chce mieć jeszcze dwa.";
+W pliku cudzyslowy.php zdefiniuj następujące zmienne:
+Spoczatek = 'Ala ma ';
+$liczba = 4;
+$koniec ' koty';
+Następnie użyj tych zmiennych wyświetlając je funkcją echo na dwa sposoby. Najpierw w pojedynczym cudzysłowie, potem w podwójnym. Przykład:
+echo '$poczatek $liczba $koniec a chce mieć jeszcze dwa.';
+echo "$poczatek $liczba $koniec a chce mieć jeszcze dwa.";

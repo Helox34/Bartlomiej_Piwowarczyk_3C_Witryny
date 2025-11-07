@@ -1,15 +1,3 @@
 
-W pliku cudzyslowy.php zdefiniuj następujące zmienne:
-Spoczatek = 'Ala ma ';
-$liczba = 4;
-$koniec ' koty';
-Następnie użyj tych zmiennych wyświetlając je funkcją echo na dwa sposoby. Najpierw w pojedynczym cudzysłowie, potem w podwójnym. Przykład:
-echo '$poczatek $liczba $koniec a chce mieć jeszcze dwa.';
-echo "$poczatek $liczba $koniec a chce mieć jeszcze dwa.";
-W pliku cudzyslowy.php zdefiniuj następujące zmienne:
-Spoczatek = 'Ala ma ';
-$liczba = 4;
-$koniec ' koty';
-Następnie użyj tych zmiennych wyświetlając je funkcją echo na dwa sposoby. Najpierw w pojedynczym cudzysłowie, potem w podwójnym. Przykład:
-echo '$poczatek $liczba $koniec a chce mieć jeszcze dwa.';
-echo "$poczatek $liczba $koniec a chce mieć jeszcze dwa.";
+Utwórz plik pole_trojkata.php zawierający poprawną składnię HTML oraz kod PHP. W pliku tym zdefiniuj zmienną Şa o wartości 12345679 oraz $h równą 144. Następnie skorzystaj z powszechnie znanego wzoru na pole trójkąta o podanej podstawie oraz wysokości opadającej na tą podstawę. Jeśli obliczenia są poprawne, to wynik powinien być równy 888888888 jednostek kwadratowych. Wyświetl ten wynik na stronie w zdaniu: Pole trójkąta o podstawie ... i wysokości równej ... wynosi ... j2 (w miejsca kropek wstaw zmienne PHP). Całe zdanie umieść w elemencie
+<address>

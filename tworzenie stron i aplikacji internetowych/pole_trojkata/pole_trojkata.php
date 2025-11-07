@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pole Trójkąta</title>
 </head>
 <body>
 <?php
-$poczatek = 'Ala ma ';
-$liczba = 4;
-$koniec = ' koty';
+// Define the base and height
+$a = 12345679;
+$h = 144;
 
-echo '$poczatek $liczba $koniec a chce mieć jeszcze dwa.';
+// Calculate the area of the triangle
+$pole = (1/2) * $a * $h;
 
-echo "$poczatek $liczba $koniec a chce mieć jeszcze dwa.";
+// Display the result
+echo "<address>Pole trójkąta o podstawie $a i wysokości równej $h wynosi $pole j2</address>";
 ?>
-
 </body>
 </html>

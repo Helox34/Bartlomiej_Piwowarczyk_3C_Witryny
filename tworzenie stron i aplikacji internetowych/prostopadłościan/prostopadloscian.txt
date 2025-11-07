@@ -1,7 +1,7 @@
 
-Utwórz plik prostopadloscian.php i zdefiniuj w nim zmienne: Şa o wartości 5 wartości 84
-85
-$b o wartości 12 oraz $c о
-Następnie oblicz długość przekątnej prostopadłościanu o krawędziach długości 5, 12 i 84, używając do tego znanych funkcji PHP. Jeśli obliczenia są poprawne, to wynik powinien wynosić Wyświetl wynik swoich obliczeń w akapicie o treści: Przekątna prostopadłościanu o krawędziach długości ..., ... i ... jest równa ....
-Następnie skorzystaj z powszechnie znanego wzoru na pole powierzchni całkowitej prostopadłościanu i oblicz powierzchnię tej figury. Jeśli obliczenia są poprawne, to wynik powinien wynosić 2976 . Wyświetl wynik swoich obliczeń w akapicie o treści: Pole powierzchni prostopadłościanu o krawędziach długości ..., ... i ... wynosi ... j2. Do liczby dwa w indeksie górnym użyj odpowiedniego
-elementu HTML.
+Utwórz plik prostopadloscian.php i zdefiniuj w nim zmienne: Sal o wartości 5 wartości 84
+$b
+o wartości 12 oraz Sc O
+Następnie oblicz długość przekątnej prostopadłościanu o krawędziach długości 5, 12 i 84, używając do tego znanych funkcji PHP. Jeśli obliczenia są poprawne, to wynik powinien wynosić 85 . Wyświetl wynik swoich obliczeń w akapicie o treści: Przekątna prostopadłościanu o krawędziach długości ..., ... i ... jest równa.... Tekst w tym akapicie ma być w kolorze fioletowym, czcionka wielkości 1,5 czcionki bazowej, pogrubienie ustaw na 600 a transformacja tekstu ma wyświetlać każde słowo z wielkiej litery. Dodatkowo akapit ma rozpoczynać się i kończyć ikoną palca wskazującego na tekst ( ). Aby uzyskać ten efekt zastosuj obrót
+rotate
+Następnie skorzystaj z powszechnie znanego wzoru na pole powierzchni całkowitej prostopadłościanu i oblicz powierzchnię tej figury. Jeśli obliczenia są poprawne, to wynik powinien wynosić 2976. Wyświetl wynik swoich obliczeń w akapicie o treści: Pole powierzchni prostopadłościanu o krawędziach długości ..., ... i ... wynosi ... j2. Do liczby dwa w indeksie górnym użyj odpowiedniego elementu HTML. Tekst w drugim akapicie ma być w kolorze purpurowym, czcionka o wielkości 25 pikseli, pogrubienie ustawione na 600 oraz nadkreślona. Dodatkowo przed i za akapitem wstaw ikonę piszącej ręki () zwróconą w kierunku tekstu.

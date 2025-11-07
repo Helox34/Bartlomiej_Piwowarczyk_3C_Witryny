@@ -1,0 +1,7 @@
+
+Utwórz plik prostopadloscian.php i zdefiniuj w nim zmienne: Şa o wartości 5 wartości 84
+85
+$b o wartości 12 oraz $c о
+Następnie oblicz długość przekątnej prostopadłościanu o krawędziach długości 5, 12 i 84, używając do tego znanych funkcji PHP. Jeśli obliczenia są poprawne, to wynik powinien wynosić Wyświetl wynik swoich obliczeń w akapicie o treści: Przekątna prostopadłościanu o krawędziach długości ..., ... i ... jest równa ....
+Następnie skorzystaj z powszechnie znanego wzoru na pole powierzchni całkowitej prostopadłościanu i oblicz powierzchnię tej figury. Jeśli obliczenia są poprawne, to wynik powinien wynosić 2976 . Wyświetl wynik swoich obliczeń w akapicie o treści: Pole powierzchni prostopadłościanu o krawędziach długości ..., ... i ... wynosi ... j2. Do liczby dwa w indeksie górnym użyj odpowiedniego
+elementu HTML.

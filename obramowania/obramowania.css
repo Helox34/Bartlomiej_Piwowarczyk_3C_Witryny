@@ -1,0 +1,29 @@
+div#border-width {
+  border-color: blueviolet;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+}
+
+div#border-width-short {
+  background-color: lime;
+  border-style: dashed;
+  border-color: orange;
+  border-width: 5px 10px 15px 20px;
+}
+
+div#border-color {
+  background-color: beige;
+  border-style: dotted;
+  border-width: 15px;
+  border-top-color: pink;
+  border-right-color: #ff889c;
+  border-bottom-color: #ff5773;
+  border-left-color: #c23260;
+}
+
+div#border-color-short {
+  background-color: burlywood;
+  border-style: groove;
+  border-width: 15px;
+  border-color: lightyellow yellow orange orangered;
+}

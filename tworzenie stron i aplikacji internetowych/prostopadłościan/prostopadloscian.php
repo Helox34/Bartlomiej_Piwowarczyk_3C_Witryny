@@ -23,6 +23,11 @@
             transformscalex(-1);
             
         }
+        .icon1 {
+            display: inline-block;
+            rotate(270deg);
+            
+        }
     </style>
 </head>
 <body>
@@ -33,7 +38,7 @@ $c = 84;
 
 $diagonal = sqrt(pow($a, 2) + pow($b, 2) + pow($c, 2));
 
-echo "<p class='roz'><span class='icon'>👉</span> Przekątna prostopadłościanu o krawędziach długości $a, $b i $c jest równa $diagonal <span class='icon'>👈</span></p>";
+echo "<p class='roz'><span class='icon1'>👉</span> Przekątna prostopadłościanu o krawędziach długości $a, $b i $c jest równa $diagonal <span class='icon1'>👈</span></p>";
 
 $surfaceArea = 2 * ($a * $b + $b * $c + $a * $c);
 

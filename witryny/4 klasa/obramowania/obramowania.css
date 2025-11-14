@@ -1,0 +1,79 @@
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: black;
+  color: white;
+  font-size: larger;
+}
+
+div {
+  width: 200px;
+  height: 200px;
+}
+
+div#size {
+  width: 300px;
+  height: 100px;
+  background-color: #0bd4f5;
+}
+
+p#size {
+  width: 75%; /* height:100%; */
+  background-color: gray;
+}
+
+div#border-width {
+  border-color: blueviolet;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+}
+
+div#border-width-short {
+  background-color: lime;
+  border-style: dashed;
+  border-color: orange;
+  border-width: 5px 10px 15px 20px;
+}
+
+div#border-color {
+  background-color: beige;
+  border-style: dotted;
+  border-width: 15px;
+  border-top-color: pink;
+  border-right-color: #ff889c;
+  border-bottom-color: #ff5773;
+  border-left-color: #c23260;
+}
+
+div#border-color-short {
+  background-color: burlywood;
+  border-style: groove;
+  border-width: 15px;
+  border-color: lightyellow yellow orange orangered;
+}
+
+div#border1{
+background-color: violet ;
+border: 10px double red;
+}
+div#border-radius-1{
+background-color: gold ;
+border: 10px double green;
+border-radius: 20px;
+}
+
+div#border-radius-2{
+background-color: lightgray ;
+border-width: 10px 20px;
+border-style: ridge;
+border-color: #307fff;
+border-top-right-radius: 20px;
+border-top-left-radius: 20px;
+}
+
+div#border-radius-3{
+background-color: indianred ;
+border: 10px dashed;
+border-color: lime gold blue aqua ;
+border-radius: 50px;
+
+}

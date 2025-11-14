@@ -1,0 +1,35 @@
+body{
+    background-color: rgb(240,215,171)
+}
+body{
+    background-image: url();
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+h1,h2{
+color: rgb(245,239,233);
+text-align: center;
+
+}
+p{
+color: #FFFAF0; 
+text-align: center;  
+font-size: 18px;
+
+}
+div{
+    width: 100px;
+    height: 100px;
+    font-size: 80%;
+}
+div.gradient{
+    background-image: linear-gradient(to bottom right,#6f4e37,#c2b280);
+
+}
+div.color{
+    background-color: #fffaf0;
+}
+div.image{
+    background-image: url(photo-1497515114629-f71d768fd07c.jpg);
+}

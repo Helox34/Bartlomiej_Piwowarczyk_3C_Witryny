@@ -1,0 +1,142 @@
+<?php
+$godziny = [
+    "Poniedziałek" => ["start" => "12:00", "end" => "15:30"],
+    "Wtorek"       => ["start" => "08:05", "end" => "10:15"],
+    "Środa"        => ["start" => "06:45", "end" => "11:25"],
+    "Czwartek"     => ["start" => "09:55", "end" => "10:35"],
+    "Piątek"       => ["start" => "13:50", "end" => "16:10"],
+    "Sobota"       => ["start" => "20:05", "end" => "22:35"],
+    "Niedziela"    => ["start" => "16:00", "end" => "18:50"],
+];
+
+function roznicaCzasu($start, $end) {
+    $t1 = strtotime($start);
+    $t2 = strtotime($end);
+    $diff = $t2 - $t1;
+
+    $h = floor($diff / 3600);
+    $m = floor(($diff % 3600) / 60);
+    $minuty = $h * 60 + $m;
+
+    return [$h, $m, $minuty];
+}
+?>
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<style>
+    table { border-collapse: collapse; width: 100%; text-align: center; }
+    th, td { border: 1px solid #444; padding: 8px; }
+    th { background: #eee; }
+    .time { padding: 3px 6px; border: 1px solid #c33; border-radius: 5px; background: #fff; }
+    .minutes { color: white; background: #2196F3; padding: 2px 6px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th></th>
+        <?php foreach ($godziny as $dzien => $czasy): ?>
+            <th><?= $dzien ?></th>
+        <?php endforeach; ?>
+    </tr>
+
+    <tr>
+        <td><b>Godziny przy komputerze</b></td>
+        <?php foreach ($godziny as $czasy): ?>
+            <td>
+                od <span class="time"><?= $czasy["start"] ?></span>
+                do <span class="time"><?= $czasy["end"] ?></span>
+            </td>
+        <?php endforeach; ?>
+    </tr>
+
+    <tr>
+        <td><b>Różnica [h:m]</b></td>
+        <?php foreach ($godziny as $czasy): 
+            list($h, $m, $minuty) = roznicaCzasu($czasy["start"], $czasy["end"]);
+        ?>
+            <td>
+                <?= $h ?> : <?= sprintf("%02d", $m) ?> 
+                (<span class="minutes"><?= $minuty ?> minut</span>)
+            </td>
+        <?php endforeach; ?>
+    </tr>
+</table>
+
+</body>
+</html>
+<?php
+$godziny = [
+    "Poniedziałek" => ["start" => "12:00", "end" => "15:30"],
+    "Wtorek"       => ["start" => "08:05", "end" => "10:15"],
+    "Środa"        => ["start" => "06:45", "end" => "11:25"],
+    "Czwartek"     => ["start" => "09:55", "end" => "10:35"],
+    "Piątek"       => ["start" => "13:50", "end" => "16:10"],
+    "Sobota"       => ["start" => "20:05", "end" => "22:35"],
+    "Niedziela"    => ["start" => "16:00", "end" => "18:50"],
+];
+
+function roznicaCzasu($start, $end) {
+    $t1 = strtotime($start);
+    $t2 = strtotime($end);
+    $diff = $t2 - $t1;
+
+    $h = floor($diff / 3600);
+    $m = floor(($diff % 3600) / 60);
+    $minuty = $h * 60 + $m;
+
+    return [$h, $m, $minuty];
+}
+?>
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<style>
+    table { border-collapse: collapse; width: 100%; text-align: center; }
+    th, td { border: 1px solid #444; padding: 8px; }
+    th { background: #eee; }
+    .time { padding: 3px 6px; border: 1px solid #c33; border-radius: 5px; background: #fff; }
+    .minutes { color: white; background: #2196F3; padding: 2px 6px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th></th>
+        <?php foreach ($godziny as $dzien => $czasy): ?>
+            <th><?= $dzien ?></th>
+        <?php endforeach; ?>
+    </tr>
+
+    <tr>
+        <td><b>Godziny przy komputerze</b></td>
+        <?php foreach ($godziny as $czasy): ?>
+            <td>
+                od <span class="time"><?= $czasy["start"] ?></span>
+                do <span class="time"><?= $czasy["end"] ?></span>
+            </td>
+        <?php endforeach; ?>
+    </tr>
+
+    <tr>
+        <td><b>Różnica [h:m]</b></td>
+        <?php foreach ($godziny as $czasy): 
+            list($h, $m, $minuty) = roznicaCzasu($czasy["start"], $czasy["end"]);
+        ?>
+            <td>
+                <?= $h ?> : <?= sprintf("%02d", $m) ?> 
+                (<span class="minutes"><?= $minuty ?> minut</span>)
+            </td>
+        <?php endforeach; ?>
+    </tr>
+</table>
+
+</body>
+</html>

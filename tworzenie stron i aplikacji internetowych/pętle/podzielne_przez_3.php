@@ -8,17 +8,17 @@
     <body>
         <h2>
             <?php
-$numbers = range(-9, 9);
-$count = count($numbers);
-foreach ($numbers as $index => $number) {
-    if ($number % 3 == 0) {
-        echo "<span style='color: limegreen'>$number</span>";
+$numery = range(-9, 9);
+$ilosc = count($numery);
+foreach ($numery as $indeks => $numer) {
+    if ($numer % 3 == 0) {
+        echo "<span style='color: limegreen'>$numer</span>";
     }
     else {
-        echo $number;
+        echo $numer;
     }
 
-    if ($index < $count - 1) {
+    if ($indeks < $ilosc - 1) {
         echo "|";
     }
 }

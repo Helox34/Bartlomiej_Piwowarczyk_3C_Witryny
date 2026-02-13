@@ -1,0 +1,88 @@
+strong {
+    background-color: blue;
+    color: white;
+}
+
+span {
+    background-color: yellow;
+    color: black;
+}
+
+em {
+    background-color: red;
+}
+
+a {
+    background-color: green;
+    color: white;
+}
+
+div.red {
+    display: inline;
+    background-color: red;
+    width: 100px;
+    height: 100px;
+}
+
+div.green {
+    display: inline;
+    background-color: green;
+    width: 100px;
+    height: 100px;
+}
+
+div.yellow {
+    display: inline;
+    background-color: yellow;
+    width: 100px;
+    height: 100px;
+}
+
+div.blue {
+    background-color: blue;
+}
+
+div.violet {
+    background-color: violet;
+}
+
+div.brown {
+    background-color: brown;
+}
+
+.inline-block {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.pusty {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: lightgray;
+}
+
+.raz {
+
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+}
+
+.dwa {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: cyan;
+    left: 30px;
+    top: 10px;
+}
+
+.trzy {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}

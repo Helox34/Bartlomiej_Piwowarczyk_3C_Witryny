@@ -1,0 +1,62 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.pudełko {
+    text-align: center;
+    border: 1px solid lightgray;
+    padding: 20px;
+    width: 300px;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+p {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.kwadrat {
+    width: 200px;
+    height: 200px;
+    background-color: #f5f5dc;
+    position: relative;
+}
+
+.kolo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.żółty {
+    background-color: yellow;
+    top: 20px;
+    left: 20px;
+}
+
+.czerwony {
+    background-color: red;
+    top: 20px;
+    right: 20px;
+}
+
+.niebieski {
+    background-color: blue;
+    bottom: 20px;
+    left: 20px;
+}
+
+.zielony {
+    background-color: green;
+    bottom: 20px;
+    right: 20px;
+}

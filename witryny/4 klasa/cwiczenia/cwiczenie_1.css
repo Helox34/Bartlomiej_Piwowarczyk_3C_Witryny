@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+}
+
+div.produkt{
+    margin: 100px;
+    width: 200px;
+    height: 300px;
+    background-color: gray;
+    position: relative;
+    background-image: url(zdjęcia/Xg_k9kpTURBXy84NDU2MzNhYmY3Zjk0NmViZjM4ZGI0M2U2ZDNmMjg2YS5qcGeTlQMACc0INM0EnZUCzQSwAMLDlQIAzQLuwsPeAAOhMAGhMQGhM8M.jfif);
+    background-size: cover;
+    background-position: center;
+}
+div.etykieta{
+    width: 100px;
+    height: 50px;
+    background-color: green;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    position: absolute;
+    left: -25px;
+    top: -25px;
+}

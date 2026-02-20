@@ -1,0 +1,36 @@
+div.kontener {
+    position: relative;
+    width: 250px;
+    height: 30px;
+    background-color: azure;
+}
+
+div.przycisk {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 250px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid gray;
+    color: black;
+    line-height: 30px;
+    text-align: center;
+}
+
+div.cień {
+    position: absolute;
+    top: 4px;
+    left: 2px;
+    width: 250px;
+    height: 30px;
+    background-color: lightgray;
+    border: 1px solid gray;
+    color: black;
+    line-height: 30px;
+    text-align: center;
+}
+
+div.przycisk:active {
+    top: 4px;
+}

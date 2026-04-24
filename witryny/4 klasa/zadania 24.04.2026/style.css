@@ -1,0 +1,18 @@
+/* Zadanie samodzielne */
+#glowny {
+    background-color: lightgray;
+    width: max(80%, 400px);
+    margin: 0 auto;
+    height: 300px;
+    overflow: hidden;
+    border: 1px solid #999;
+}
+
+.tekst {
+    background-color: white;
+    width: calc(100% - 40px);
+    height: min(50%, 100px);
+    margin: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}

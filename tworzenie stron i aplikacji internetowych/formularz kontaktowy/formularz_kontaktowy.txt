@@ -1,0 +1,23 @@
+2026-04-24 13:35:39
+Array
+(
+    [full_name] => Bartłomiej Piwowarczyk
+    [email_address] => bartlomiejpiwowarczyk5@gmail.com
+    [age_range] => do 25
+    [message_content] => Piątki z PHP'em
+
+    [consent] => true
+)
+
+
+2026-04-24 13:53:23
+Array
+(
+    [full_name] => Bartłomiej Piwowarczyk
+    [email_address] => bartlomiejpiwowarczyk5@gmail.com
+    [age_range] => do 25
+    [message_content] => Piątki z PHP'em
+
+    [consent] => true
+)
+

@@ -26,24 +26,20 @@ $komunikat1 = "";
 $komunikat2 = "";
 $komunikat3 = "";
 
-// sprawdzanie czy kliknieto przycisk wyslij
 if (isset($_POST['wyslij'])) {
     
-    // sprawdzanie imienia
     if (empty($_POST['imie'])) {
         $komunikat1 = "Musisz podać imię!";
     } else {
         $imie = $_POST['imie'];
     }
 
-    // sprawdzanie nazwiska
     if (empty($_POST['nazwisko'])) {
         $komunikat2 = "Musisz podać nazwisko!";
     } else {
         $nazwisko = $_POST['nazwisko'];
     }
 
-    // sprawdzanie opcji
     if (empty($_POST['opcja'])) {
         $komunikat3 = "Nie wybrano żadnej opcji!";
     } else {

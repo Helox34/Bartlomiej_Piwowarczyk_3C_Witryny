@@ -40,16 +40,16 @@
     }
     form {
         background-color: #f0f7ff;
-        padding: 20px;
-        width: 350px;
+        padding: 25px;
+        width: 550px;
     }
     input[type="text"], select, textarea {
-        width: 250px;
-        margin-bottom: 10px;
+        width: 550px;
+        margin-bottom: 15px;
         display: block;
     }
     textarea {
-        height: 50px;
+        height: 65px;
     }
 </style>
 

@@ -1,0 +1,56 @@
+1. mysqli_connect()
+Funkcja ta służy do nawiązania połączenia z serwerem bazy danych MySQL. Zwraca obiekt reprezentujący połączenie (lub false w przypadku błędu), który jest następnie używany przez inne funkcje mysqli_*.
+
+Przyjmowane parametry (najważniejsze):
+* hostname (string) – Adres serwera bazy danych (np. 'localhost' lub adres IP).
+* username (string) – Nazwa użytkownika bazy danych (np. 'root').
+* password (string) – Hasło użytkownika bazy danych.
+* database (string, opcjonalny) – Nazwa bazy danych, z którą chcemy się od razu połączyć.
+
+Przykład użycia:
+$conn = mysqli_connect('localhost', 'root', 'haslo123', 'moja_baza');
+
+
+2. mysqli_query()
+Ta funkcja służy do wykonania zapytania SQL na połączonej bazie danych. Jeśli zapytanie modyfikuje dane (INSERT, UPDATE, DELETE), zwraca true (sukces) lub false (błąd). Jeśli zapytanie pobiera dane (SELECT), zwraca specjalny obiekt reprezentujący wynik (tzw. zbiór wyników / result set).
+
+Przyjmowane parametry:
+* link (obiekt połączenia) – Zmienna przechowująca połączenie z bazą (zwrócona wcześniej przez mysqli_connect()).
+* query (string) – Treść zapytania SQL do wykonania.
+
+Przykład użycia:
+$zapytanie = "SELECT id, nazwa FROM uzytkownicy";
+$wynik = mysqli_query($conn, $zapytanie);
+
+
+3. mysqli_num_rows()
+Funkcja ta służy do zliczenia liczby wierszy zwróconych przez zapytanie typu SELECT. Przydaje się np. do sprawdzenia, czy użytkownik o danym loginie istnieje w bazie, albo czy w ogóle są jakieś rekordy do wyświetlenia.
+
+Przyjmowane parametry:
+* result (obiekt wyniku) – Zbiór wyników zwrócony przez funkcję mysqli_query().
+
+Przykład użycia:
+$ilosc_wierszy = mysqli_num_rows($wynik);
+echo "Znaleziono " . $ilosc_wierszy . " rekordów.";
+
+
+4. mysqli_fetch_assoc()
+Ta funkcja służy do pobrania jednego wiersza ze zbioru wyników i zapisania go w postaci tablicy asocjacyjnej. Kluczami w tej tablicy są nazwy kolumn z bazy danych, a wartościami – odpowiednie dane z tego wiersza. Za każdym wywołaniem funkcja pobiera kolejny wiersz. Gdy nie ma już więcej wierszy do pobrania, zwraca null. Często używana w pętli while.
+
+Przyjmowane parametry:
+* result (obiekt wyniku) – Zbiór wyników zwrócony przez funkcję mysqli_query().
+
+Przykład użycia:
+while ($wiersz = mysqli_fetch_assoc($wynik)) {
+    echo "ID: " . $wiersz['id'] . " - Nazwa: " . $wiersz['nazwa'] . "<br>";
+}
+
+
+5. mysqli_close()
+Funkcja ta służy do zakończenia (zamknięcia) połączenia z bazą danych. Choć PHP automatycznie zamyka połączenia po zakończeniu wykonywania skryptu, dobrą praktyką jest ręczne ich zamykanie, aby szybciej zwolnić zasoby serwera bazy danych.
+
+Przyjmowane parametry:
+* link (obiekt połączenia) – Zmienna przechowująca połączenie, które chcemy zamknąć.
+
+Przykład użycia:
+mysqli_close($conn);

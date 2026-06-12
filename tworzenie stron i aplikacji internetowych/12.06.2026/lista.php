@@ -37,45 +37,28 @@
     </style>
 </head>
 <body>
-    <h2 style="text-align:center;">Dane w tabeli <em>dostawy</em></h2>
+    <h2 style="text-align:center;">Dane w tabeli dostawy</h2>
     <?php
-    $servername = 'localhost';
-    $username = 'magazyn';
-    $password = 'magazyn';
-    $database = 'magazyn';
 
-    $conn = mysqli_connect($servername, $username, $password, $database);
-    if (!$conn) {
-        die('<p>Błąd połączenia: ' . mysqli_connect_error() . '</p>');
-    }
+    $conn = mysqli_connect('localhost', 'root', '', 'magazyn');
+    if (!$conn) { die('Błąd połączenia: ' . mysqli_connect_error()); }
     mysqli_set_charset($conn, 'utf8');
 
-    $sql = "SELECT id, nazwa, ilosc, data FROM dostawy ORDER BY id";
-    $result = mysqli_query($conn, $sql);
-    if (!$result) {
-        echo '<p>Błąd zapytania: ' . htmlspecialchars(mysqli_error($conn)) . '</p>';
-        mysqli_close($conn);
-        exit;
-    }
-
-    $count = mysqli_num_rows($result);
-    echo '<table>';
+    $res = mysqli_query($conn, 'SELECT id, nazwa, ilosc, data FROM dostawy ORDER BY id');
+    echo '<table border="1" cellpadding="6" cellspacing="0">';
     echo '<tr><th>ID</th><th>Nazwa</th><th>Ilość</th><th>Data</th></tr>';
-
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($r = mysqli_fetch_assoc($res)) {
         echo '<tr>';
-        echo '<td>' . htmlspecialchars($row['id']) . '</td>';
-        echo '<td><a href="dostawa.php?id=' . intval($row['id']) . '">' . htmlspecialchars($row['nazwa']) . '</a></td>';
-        echo '<td>' . htmlspecialchars($row['ilosc']) . '</td>';
-        echo '<td>' . htmlspecialchars($row['data']) . '</td>';
+        echo '<td>' . $r['id'] . '</td>';
+        echo '<td><a href="dostawa.php?id=' . $r['id'] . '">' . htmlspecialchars($r['nazwa']) . '</a></td>';
+        echo '<td>' . $r['ilosc'] . '</td>';
+        echo '<td>' . $r['data'] . '</td>';
         echo '</tr>';
     }
-
-    echo '<tr><td colspan="4" style="text-align:center;"><a href="dodaj.php">dodaj nową dostawę</a></td></tr>';
+    echo '<tr><td colspan="4" style="text-align:center;"><a href="dostawa_dodaj.php">dodaj nową dostawę</a></td></tr>';
     echo '</table>';
-    echo '<p class="count">Liczba wierszy w tabeli <em>dostawy</em>: ' . $count . '</p>';
 
-    mysqli_free_result($result);
+    mysqli_free_result($res);
     mysqli_close($conn);
     ?>
 </body>

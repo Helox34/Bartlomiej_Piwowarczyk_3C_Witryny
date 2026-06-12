@@ -33,48 +33,32 @@
 <body>
     <h1>Informacje o dostawie</h1>
     <?php
-    $servername = 'localhost';
-    $username = 'magazyn';
-    $password = 'magazyn';
-    $database = 'magazyn';
-
-    $conn = mysqli_connect($servername, $username, $password, $database);
-    if (!$conn) {
-        die('<p>Błąd połączenia: ' . mysqli_connect_error() . '</p>');
-    }
+    $conn = mysqli_connect('localhost', 'root', '', 'magazyn');
+    if (!$conn) { die('Błąd połączenia: ' . mysqli_connect_error()); }
     mysqli_set_charset($conn, 'utf8');
 
     $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
     if ($id <= 0) {
-        echo '<p>Nieprawidłowy identyfikator dostawy.</p>';
-        echo '<a href="lista.php">Powrót do listy dostaw</a>';
-        mysqli_close($conn);
+        echo '<p>Nieprawidłowy identyfikator.</p>';
+        echo '<p><a href="lista.php">Powrót do listy</a></p>';
         exit;
     }
 
-    $sql = "SELECT id, nazwa, ilosc, data FROM dostawy WHERE id = " . $id;
-    $result = mysqli_query($conn, $sql);
-    if (!$result) {
-        echo '<p>Błąd zapytania: ' . htmlspecialchars(mysqli_error($conn)) . '</p>';
-        mysqli_close($conn);
-        exit;
-    }
-
-    if (mysqli_num_rows($result) === 0) {
-        echo '<p>Nie znaleziono dostawy o podanym identyfikatorze.</p>';
-    } else {
-        $row = mysqli_fetch_assoc($result);
+    $res = mysqli_query($conn, 'SELECT id, nazwa, ilosc, data FROM dostawy WHERE id=' . $id);
+    if ($row = mysqli_fetch_assoc($res)) {
         echo '<ul>';
-        echo '<li>Id: ' . htmlspecialchars($row['id']) . '</li>';
+        echo '<li>Id: ' . $row['id'] . '</li>';
         echo '<li>Nazwa: ' . htmlspecialchars($row['nazwa']) . '</li>';
-        echo '<li>Ilość: ' . htmlspecialchars($row['ilosc']) . '</li>';
-        echo '<li>Data: ' . htmlspecialchars($row['data']) . '</li>';
+        echo '<li>Ilość: ' . $row['ilosc'] . '</li>';
+        echo '<li>Data: ' . $row['data'] . '</li>';
         echo '</ul>';
+    } else {
+        echo '<p>Brak danych dla tego ID.</p>';
     }
 
-    mysqli_free_result($result);
+    mysqli_free_result($res);
     mysqli_close($conn);
     ?>
-    <a href="lista.php">Powrót do listy dostaw</a>
+    <p><a href="lista.php">Powrót do listy dostaw</a></p>
 </body>
 </html>

@@ -81,7 +81,7 @@
         echo '</tr>';
     }
 
-    echo '<tr><td class="full-row" colspan="4"><a href="dodaj.php">dodaj nową dostawę</a></td></tr>';
+    echo '<tr><td class="full-row" colspan="4"><a href="dostawa_dodaj.php">dodaj nową dostawę</a></td></tr>';
     echo '</table>';
 
     echo '<p class="count">Liczba wierszy w tabeli <em>dostawy</em>: ' . $count . '</p>';

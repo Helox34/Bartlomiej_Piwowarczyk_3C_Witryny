@@ -71,7 +71,6 @@
     <h1>Dodaj nową dostawę</h1>
     <div class="box">
     <?php
-    // Lekcyjna wersja formularza dodawania
     $conn = mysqli_connect('localhost', 'root', '', 'magazyn');
     if (!$conn) { die('Błąd połączenia: ' . mysqli_connect_error()); }
     mysqli_set_charset($conn, 'utf8');

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>EkoSystem Fotowoltaiczny</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    :root {
+      --bg: #080d1a;
+      --card: rgba(255,255,255,0.048);
+      --border: rgba(255,255,255,0.09);
+      --yellow: #ffc400;
+      --red: #ff3c14;
+      --purple: #c850ff;
+      --blue: #50a0ff;
+      --green: #22c55e;
+      --orange: #f97316;
+      --text: #f1f5f9;
+      --muted: #64748b;
+      --muted2: #475569;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse at 10% 0%,   rgba(255,196,0,.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 30%,  rgba(80,160,255,.06) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 100%, rgba(200,80,255,.05) 0%, transparent 50%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: calc(16px + var(--safe-top)) calc(14px + var(--safe-right)) calc(48px + var(--safe-bottom)) calc(14px + var(--safe-left));
+      -webkit-tap-highlight-color: transparent;
+    }
+    .wrap { max-width: 520px; margin: 0 auto; width: 100%; }
+    .hdr { text-align: center; padding: 8px 0 24px; }
+    .hdr-icon { font-size: 2.8rem; margin-bottom: 6px; line-height: 1; }
+    .hdr h1 { font-size: clamp(1.3rem, 5vw, 1.7rem); font-weight: 700; letter-spacing: -.4px; line-height: 1.2; }
+    .hdr p { color: var(--muted); font-size: clamp(.78rem, 3vw, .88rem); margin-top: 4px; }
+    .power-wrap { display: flex; justify-content: center; margin-bottom: 18px; }
+    .power-btn {
+      width: 84px; height: 84px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.06);
+      cursor: pointer; font-size: 2rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .25s; user-select: none; touch-action: manipulation;
+    }
+    .power-btn.on { border-color: var(--green); background: rgba(34,197,94,.15); box-shadow: 0 0 30px rgba(34,197,94,.38); }
+    .power-btn.off { border-color: var(--muted2); background: rgba(255,255,255,.04); }
+    .power-btn:active { transform: scale(.91); }
+    .power-label { text-align: center; font-size: .8rem; color: var(--muted); margin-top: 8px; margin-bottom: 18px; letter-spacing: .3px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 16px 16px; margin-bottom: 12px; backdrop-filter: blur(14px); }
+    .card-title { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.1px; color: var(--muted); margin-bottom: 13px; display: flex; align-items: center; gap: 7px; }
+    .card-title em { font-size: .95rem; font-style: normal; }
+    .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .stat-box { background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 14px; padding: 12px 13px; }
+    .stat-label { font-size: .65rem; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: .8px; }
+    .stat-val { font-size: clamp(.85rem, 3.5vw, .95rem); font-weight: 600; display: flex; align-items: center; gap: 6px; word-break: break-word; }
+    .stat-val.small { font-size: clamp(.78rem, 3vw, .85rem); font-weight: 400; }
+    .stat-full { grid-column: 1 / -1; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-green  { background: var(--green); box-shadow: 0 0 6px var(--green); }
+    .dot-yellow { background: var(--yellow); box-shadow: 0 0 6px var(--yellow); }
+    .dot-red    { background: var(--red); box-shadow: 0 0 6px var(--red); }
+    .dot-grey   { background: var(--muted2); }
+    .wifi-bar-wrap { margin-top: 7px; background: rgba(255,255,255,.08); border-radius: 4px; height: 5px; overflow: hidden; }
+    .wifi-bar { height: 100%; background: var(--green); border-radius: 4px; transition: width .8s; }
+    .btn-auto {
+      width: 100%; min-height: 52px; padding: 13px 16px; border-radius: 14px;
+      border: 1px solid rgba(255,196,0,.35); background: rgba(255,196,0,.1);
+      color: var(--yellow); font-family: inherit; font-size: clamp(.92rem, 3.5vw, 1rem); font-weight: 600;
+      cursor: pointer; transition: all .2s; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 9px;
+    }
+    .btn-auto.active { background: rgba(255,196,0,.22); box-shadow: 0 0 20px rgba(255,196,0,.2); }
+    .auto-prog { margin-top: 12px; }
+    .prog-label { font-size: clamp(.68rem, 2.8vw, .74rem); color: var(--muted); margin-bottom: 6px; display: flex; justify-content: space-between; gap: 8px; }
+    .prog-wrap { background: rgba(255,255,255,.08); border-radius: 6px; height: 7px; overflow: hidden; }
+    .prog-bar  { height: 100%; background: linear-gradient(90deg, var(--yellow), var(--orange)); border-radius: 6px; transition: width 1s linear; }
+    .phase-dots { display: flex; gap: 8px; margin-top: 10px; justify-content: center; }
+    .pd { width: 32px; height: 5px; border-radius: 3px; background: rgba(255,255,255,.12); transition: .3s; }
+    .pd.active-pd { background: var(--yellow); }
+    .scene-btn {
+      width: 100%; min-height: 60px; padding: 13px 14px; margin-bottom: 10px; border-radius: 16px;
+      border: 1px solid var(--border); background: rgba(255,255,255,.04); color: var(--text);
+      font-family: inherit; font-size: clamp(.88rem, 3.5vw, .95rem); font-weight: 500; cursor: pointer;
+      transition: all .18s; display: flex; align-items: center; gap: 13px; text-align: left;
+    }
+    .scene-btn .ic { font-size: 1.5rem; flex-shrink: 0; line-height: 1; }
+    .scene-btn .sub { font-size: clamp(.7rem, 2.8vw, .76rem); color: var(--muted); margin-top: 3px; }
+    .scene-btn.active-scene { border-color: rgba(34,197,94,.5); background: rgba(34,197,94,.08); }
+    .bank-row { display: flex; gap: 10px; }
+    .bank-btn {
+      flex: 1; min-height: 52px; padding: 12px 10px; border-radius: 14px; font-family: inherit;
+      font-size: clamp(.82rem, 3.2vw, .9rem); font-weight: 600; cursor: pointer; transition: all .2s; border: 1px solid transparent;
+    }
+    .bank-btn.lad  { background: rgba(255,55,15,.08); border-color: rgba(255,55,15,.25); color: var(--red); }
+    .bank-btn.lad.active  { background: rgba(255,55,15,.22); border-color: var(--red); box-shadow: 0 0 14px rgba(255,55,15,.2); }
+    .bank-btn.roz  { background: rgba(200,80,255,.08); border-color: rgba(200,80,255,.25); color: var(--purple); }
+    .bank-btn.roz.active  { background: rgba(200,80,255,.22); border-color: var(--purple); box-shadow: 0 0 14px rgba(200,80,255,.2); }
+    .tog-row { display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.05); gap: 10px; }
+    .tog-row:last-child { border-bottom: none; }
+    .tog-left { display: flex; align-items: center; gap: 11px; flex: 1; min-width: 0; }
+    .tog-dot  { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .tog-lbl  { font-size: clamp(.85rem, 3.5vw, .93rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .tog-sub  { font-size: clamp(.67rem, 2.6vw, .73rem); color: var(--muted); margin-top: 2px; }
+    .switch { position: relative; display: inline-block; width: 52px; height: 30px; flex-shrink: 0; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #1e293b; border-radius: 34px; transition: .25s; }
+    .slider::before { position: absolute; content: ""; height: 22px; width: 22px; left: 4px; bottom: 4px; background: #475569; border-radius: 50%; transition: .25s; }
+    input:checked + .slider { background: #0ea5e9; }
+    input:checked + .slider::before { transform: translateX(22px); background: white; }
+    .disabled-overlay { opacity: .35; pointer-events: none; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hdr">
+    <div class="hdr-icon">☀️</div>
+    <h1>EkoSystem Fotowoltaiczny</h1>
+    <p>Makieta wystawy — panel sterowania</p>
+  </div>
+
+  <div class="power-wrap">
+    <div>
+      <button class="power-btn on" id="power-btn" onclick="toggleMaster()">⏻</button>
+      <div class="power-label" id="power-label">Włączono</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><em>📡</em> Status systemu</div>
+    <div class="status-grid">
+      <div class="stat-box"><div class="stat-val" id="st-esp"><div class="dot dot-green"></div>Online</div><div class="stat-label">Połączenie z ESP</div></div>
+      <div class="stat-box"><div class="stat-val" id="st-wifi">–</div><div class="wifi-bar-wrap"><div class="wifi-bar" id="wifi-bar" style="width:0%"></div></div><div class="stat-label">Sygnał WiFi</div></div>
+      <div class="stat-box stat-full"><div class="stat-label">Aktualny tryb</div><div class="stat-val small" id="st-mode">–</div></div>
+      <div class="stat-box stat-full"><div class="stat-label">Świecące linie</div><div class="stat-val small" id="st-lines">–</div></div>
+    </div>
+  </div>
+
+  <div class="card" id="section-auto">
+    <div class="card-title"><em>🤖</em> Tryb automatyczny</div>
+    <button class="btn-auto active" id="btn-auto" onclick="setAuto()"><span id="auto-icon">▶</span> Automatyczna animacja (co 25s)</button>
+    <div class="auto-prog" id="auto-prog">
+      <div class="prog-label"><span id="phase-name">–</span><span id="phase-timer">–</span></div>
+      <div class="prog-wrap"><div class="prog-bar" id="prog-bar" style="width:0%"></div></div>
+      <div class="phase-dots"><div class="pd active-pd" id="pd0"></div><div class="pd" id="pd1"></div><div class="pd" id="pd2"></div><div class="pd" id="pd3"></div></div>
+    </div>
+  </div>
+
+  <div class="card" id="section-scenes">
+    <div class="card-title"><em>🎬</em> Scenariusze (tryb ręczny)</div>
+    <button class="scene-btn" id="scene-1" onclick="triggerScene(1)"><div class="ic">⚡</div><div><div>Produkcja własna — Dzień</div><div class="sub">Panele aktywne · Bank się ładuje</div></div></button>
+    <button class="scene-btn" id="scene-2" onclick="triggerScene(2)"><div class="ic">🌙</div><div><div>Noc — Bank zasila dom</div><div class="sub">Panele off · Bank rozładowuje się</div></div></button>
+    <button class="scene-btn" id="scene-3" onclick="triggerScene(3)"><div class="ic">🌩️</div><div><div>Tryb awaryjny OFF-GRID</div><div class="sub">Sieć odcięta · Bank + dom autonomicznie</div></div></button>
+  </div>
+
+  <div class="card" id="section-bank">
+    <div class="card-title"><em>🔋</em> Bank energii (tryb ładowania)</div>
+    <div class="bank-row">
+      <button class="bank-btn lad active" id="btn-lad" onclick="setBankMode(true)">⬇️ Ładuje się</button>
+      <button class="bank-btn roz" id="btn-roz" onclick="setBankMode(false)">⬆️ Rozładowuje</button>
+    </div>
+  </div>
+
+  <div class="card" id="section-lines">
+    <div class="card-title"><em>🔧</em> Sterowanie liniami</div>
+    <div id="toggles"></div>
+  </div>
+</div>
+
+<script>
+  const LINES = [
+    { id:1,  dot:'#ffc400', label:'Panele słoneczne',       sub:'Linie 1,2,3 — niebieska taśma' },
+    { id:4,  dot:'#ffc400', label:'Linia 4',                sub:'0.25m — od falownika' },
+    { id:5,  dot:'#ffc400', label:'Linia 5',                sub:'0.25m — do instalacji' },
+    { id:6,  dot:'#ffc400', label:'Linia 6 (falownik)',     sub:'0.9m — żółta taśma' },
+    { id:7,  dot:'#50a0ff', label:'Linia 7 (sieć backup)',  sub:'0.9m — niebieska' },
+    { id:8,  dot:'#ff3c14', label:'Bank — kabel lewy',      sub:'Linia 8 — 1.1m' },
+    { id:9,  dot:'#ff3c14', label:'Bank — kabel prawy',     sub:'Linia 9 — 1.1m' },
+    { id:10, dot:'#ffc400', label:'Puszki stałe (ambient)', sub:'Linie 10 i 11 — bez animacji' },
+  ];
+  let masterOn = true; let autoMode = true; let autoPhase = 0; let autoProgress = 0;
+  const INTERVAL = 25000;
+  const phaseNames = ['⚡ Dzień: Panele ładują bank', '☀️ Dzień: Maks. produkcja', '🌙 Noc: Bank zasila dom', '🌩️ OFF-GRID: Autonomia'];
+
+  function init() {
+    const c = document.getElementById('toggles');
+    LINES.forEach(l => {
+      c.innerHTML += `<div class="tog-row"><div class="tog-left"><div class="tog-dot" style="background:${l.dot}"></div><div><div class="tog-lbl">${l.label}</div><div class="tog-sub">${l.sub}</div></div></div><label class="switch"><input type="checkbox" id="line-${l.id}" onchange="toggle(${l.id},this.checked)"><span class="slider"></span></label></div>`;
+    });
+    fetchState();
+    setInterval(fetchState, 3000);
+    setInterval(tickAutoProgress, 500);
+  }
+
+  async function fetchState() {
+    try {
+      const res = await fetch('/api/state?_t=' + Date.now());
+      if (!res.ok) throw new Error();
+      applyState(await res.json());
+      setEspStatus(true);
+    } catch(e) { setEspStatus(false); }
+  }
+
+  function setEspStatus(online) {
+    document.getElementById('st-esp').innerHTML = online ? '<div class="dot dot-green"></div>Online' : '<div class="dot dot-grey"></div>Brak połączenia';
+  }
+
+  function applyState(s) {
+    masterOn = s.master; autoMode = s.auto; autoPhase = s.auto_phase; const scene = s.scene;
+    document.getElementById('power-btn').className = 'power-btn ' + (masterOn ? 'on' : 'off');
+    document.getElementById('power-label').textContent = masterOn ? 'Włączono' : 'Wyłączono';
+    const pct = s.wifi_pct;
+    document.getElementById('st-wifi').innerHTML = `<div class="dot ${pct>60?'dot-green':pct>30?'dot-yellow':'dot-red'}"></div>${pct}%`;
+    document.getElementById('wifi-bar').style.width = pct + '%';
+    document.getElementById('wifi-bar').style.background = pct > 60 ? '#22c55e' : pct > 30 ? '#ffc400' : '#ef4444';
+    document.getElementById('st-mode').textContent = s.mode_name;
+    document.getElementById('st-lines').textContent = s.active_lines;
+    document.getElementById('btn-auto').className = 'btn-auto' + (autoMode ? ' active' : '');
+    document.getElementById('auto-icon').textContent = autoMode ? '▶' : '⏸';
+    for (let i=0;i<4;i++) document.getElementById('pd'+i).className = 'pd' + (i===autoPhase ? ' active-pd' : '');
+    document.getElementById('phase-name').textContent = phaseNames[autoPhase] || '–';
+    document.querySelectorAll('.scene-btn').forEach(b => b.classList.remove('active-scene'));
+    if (!autoMode && scene >= 1 && scene <= 3) document.getElementById('scene-'+scene)?.classList.add('active-scene');
+    document.getElementById('btn-lad').className = 'bank-btn lad' + (s.bank_laduje ? ' active' : '');
+    document.getElementById('btn-roz').className = 'bank-btn roz' + (!s.bank_laduje ? ' active' : '');
+    ['1','4','5','6','7','8','9','10'].forEach(id => { const el = document.getElementById('line-'+id); if (el) el.checked = s[id]; });
+    ['section-auto','section-scenes','section-bank','section-lines'].forEach(id => { const el = document.getElementById(id); if (el) el.className = masterOn ? 'card' : 'card disabled-overlay'; });
+  }
+
+  function tickAutoProgress() {
+    if (!autoMode || !masterOn) { document.getElementById('prog-bar').style.width = '0%'; document.getElementById('phase-timer').textContent = ''; return; }
+    autoProgress = Math.min(autoProgress + (500/INTERVAL*100), 100);
+    const rem = Math.round((INTERVAL - autoProgress/100*INTERVAL)/1000);
+    document.getElementById('prog-bar').style.width = autoProgress + '%';
+    document.getElementById('phase-timer').textContent = 'Zmiana za ' + rem + 's';
+    if (autoProgress >= 100) { autoProgress = 0; autoPhase = (autoPhase + 1) % 4; }
+  }
+
+  function disableAutoUI() {
+    autoMode = false; autoProgress = 0;
+    document.getElementById('btn-auto').className = 'btn-auto'; document.getElementById('auto-icon').textContent = '⏸';
+    document.getElementById('prog-bar').style.width = '0%'; document.getElementById('phase-timer').textContent = 'Tryb ręczny';
+  }
+
+  async function toggleMaster() { masterOn = !masterOn; await fetch(`/api/master?state=${masterOn ? 1 : 0}&_t=${Date.now()}`); fetchState(); }
+  async function setAuto() { disableAutoUI(); autoMode = true; document.getElementById('btn-auto').className = 'btn-auto active'; document.getElementById('auto-icon').textContent = '▶'; await fetch('/api/auto?_t=' + Date.now()); fetchState(); }
+  async function triggerScene(id) { disableAutoUI(); document.getElementById('scene-' + id)?.classList.add('active-scene'); await fetch(`/api/scene?id=${id}&_t=${Date.now()}`); fetchState(); }
+  async function toggle(id, checked) { disableAutoUI(); await fetch(`/api/toggle?line=${id}&state=${checked ? 1 : 0}&_t=${Date.now()}`); fetchState(); }
+  async function setBankMode(lad) { disableAutoUI(); await fetch(`/api/bank?mode=${lad ? 1 : 0}&_t=${Date.now()}`); fetchState(); }
+  window.onload = init;
+</script>
+</body>
+</html>

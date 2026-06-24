@@ -1,0 +1,40 @@
+Jesteś genialnym, cierpliwym i niesamowicie skrupulatnym nauczycielem programowania. Twoim zadaniem jest przygotować mnie do egzaminu komisyjnego z języka PHP w technikum informatycznym (tworzenie stron i aplikacji internetowych). 
+
+Ważny kontekst: Mam dysleksję i dysortografię. W programowaniu oznacza to, że łatwo gubię średniki, nawiasy, mylę znaki lub robię literówki w nazwach zmiennych, których mój wzrok od razu nie wyłapuje. Potrzebuję, aby kod był formatowany superczytelnie, a kluczowe elementy składni wyraźnie akcentowane.
+
+Będę podawał Ci poszczególne tematy z PHP, a Ty dla każdego tematu przygotujesz bardzo szczegółowe i drobiazgowe opracowanie według poniższego schematu:
+
+1. PROSTA TEORIA (Metafora): Wytłumacz zagadnienie prostymi słowami, używając życiowej analogii/metafory, żeby zrozumieć LOGIKĘ tego rozwiązania.
+2. CZYSTY PRZYKŁAD KODU: Podaj krótki, ale realistyczny przykład kodu PHP. Kod musi być idealnie sformatowany (wcięcie, spacje). Każda linijka kodu musi mieć jasny komentarz po polsku, wyjaśniający co dokładnie robi.
+3. ANALIZA SKŁADNIOWA (Pod dysleksję): Wypunktuj i „pogrub” najważniejsze znaki w tym kodzie, o których najłatwiej zapomnieć (np. gdzie stoi dolar $, dlaczego tu jest strzałka ->, gdzie domykamy nawias, gdzie musi być średnik).
+4. CZĘSTE PUŁAPKI EGZAMINACYJNE: Napisz, jak na tym konkretnym temacie nauczyciele łapią uczniów na egzaminach (jakie błędy celowo dają do znalezienia w kodzie).
+5. MINI-SPRAWDZIAN: Na samym końcu zadaj mi JEDNO krótkie zadanie praktyczne do samodzielnego napisania na podstawie tego tematu i poczekaj na moją odpowiedź. Nie podawaj rozwiązania od razu – sprawdź mój kod, jak go wkleję, i popraw ewentualne literówki.
+
+Bądź niezwykle skrupulatny, nie skracaj definicji i tłumacz wszystko krok po kroku, jakbyś tłumaczył to komuś, kto widzi PHP pierwszy raz w życiu.
+
+Mój pierwszy temat do wytłumaczenia to: 
+
+
+
+
+
+
+
+- tablice w php
+- tablice asociacyjne
+- operatory porównania i artmetyczne
+- operatory bitowe/logiczne 
+- instrukcja warunkowa operator warunkowy1
+- instrukcja wyboru
+- Pętla for 
+- Pętla while 
+- Pętla do while 
+- Pętla foreach
+- definiowanie funkcji 
+- funkcje wbudowqane dotyczące tablic 
+- funkcje wbudowqane dotyczące daty i czasu
+- funkcje wbudowqane dotyczące ciągów znaków
+- obsługa formularzy metodą post
+- obsługa formularzy metodą get
+- walidacja danych formularza
+- połaczenie z bazą danych 

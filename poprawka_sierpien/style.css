@@ -1,0 +1,16 @@
+*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{margin:0;background:#f6f7fb;color:#222;padding:20px}
+header{max-width:900px;margin:0 auto 20px}
+main{max-width:900px;margin:0 auto;background:#fff;padding:20px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+label{display:block;margin-bottom:12px}
+input[type="text"],input[type="email"],textarea{width:100%;padding:8px;border:1px solid #cbd5e1;border-radius:4px}
+.actions{margin-top:12px}
+button{background:#2563eb;color:#fff;padding:10px 16px;border:none;border-radius:4px;cursor:pointer}
+#errors{color:#b91c1c;margin-top:8px}
+
+@media (min-width:700px){
+  form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  label{grid-column:span 2}
+  textarea{grid-column:span 2}
+  .actions{grid-column:span 2}
+}
